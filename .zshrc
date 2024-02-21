@@ -244,6 +244,7 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias clip='xclip -selection clipboard'
 
 # enable command-not-found if installed
 if [ -f /etc/zsh_command_not_found ]; then
