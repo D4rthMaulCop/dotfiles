@@ -253,7 +253,7 @@ fi
 
 # adding date and time to terminal prompt
 # time zone is UTC for universal-ness
-PROMPT="%F{%(#.blue.green)}[%D{%m/%f/%y} %D{%L:%M:%S}]"$PROMPT
+PROMPT="%F{%(#.blue.green)}[%D{%m/%f/%y} %D{%L:%M:%S}] "$PROMPT
 
 
 # Created by `pipx` on 2023-07-03 03:34:48
