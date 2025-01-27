@@ -16,9 +16,6 @@ syntax on
 " Turn on line numbers
 set number
 
-" Highlight cursor line underneath the cursor horizontally.
-" set cursorline
-
 " Set shift width to 4 spaces.
 set shiftwidth=4
 
