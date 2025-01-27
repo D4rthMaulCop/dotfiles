@@ -97,7 +97,7 @@ configure_prompt() {
     #[ "$EUID" -eq 0 ] && prompt_symbol=💀
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PROMPT=$'%F{%(#.blue.green)}${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n'$prompt_symbol$'%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+            PROMPT=$'%F{%(#.blue.green)}─${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n'$prompt_symbol$'%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
             # Right-side prompt with exit codes and background processes
             #RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
             ;;
@@ -179,7 +179,7 @@ unset color_prompt force_color_prompt
 
 toggle_oneline_prompt(){
     if [ "$PROMPT_ALTERNATIVE" = oneline ]; then
-        PROMPT_ALTERNATIVE=oneline
+        PROMPT_ALTERNATIVE=twoline
     else
         PROMPT_ALTERNATIVE=oneline
     fi
@@ -244,17 +244,16 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-alias clip='xclip -selection clipboard'
+
+# enable auto-suggestions based on the history
+if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # change suggestion color
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+fi
 
 # enable command-not-found if installed
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
-
-# adding date and time to terminal prompt
-# time zone is UTC for universal-ness
-PROMPT="%F{%(#.blue.green)}[%D{%m/%f/%y} %D{%L:%M:%S}] "$PROMPT
-
-
-# Created by `pipx` on 2023-07-03 03:34:48
-export PATH="$PATH:/home/kali/.local/bin:/home/kali/Tools/Dependencies/nim-1.6.2/bin:/home/kali/Tools/Dependencies/Donut"
+PROMPT="%F{%(#.blue.green)}[%D{%m/%f/%y} %D{%L:%M:%S}]"$PROMPT
