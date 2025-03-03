@@ -16,18 +16,10 @@ WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 PROMPT_EOL_MARK=""
 
 # configure key keybindings
-bindkey -e                                        # emacs key bindings
-bindkey ' ' magic-space                           # do history expansion on space
-bindkey '^U' backward-kill-line                   # ctrl + U
-bindkey '^[[3;5~' kill-word                       # ctrl + Supr
-bindkey '^[[3~' delete-char                       # delete
-bindkey '^[[1;5C' forward-word                    # ctrl + ->
-bindkey '^[[1;5D' backward-word                   # ctrl + <-
-bindkey '^[[5~' beginning-of-buffer-or-history    # page up
-bindkey '^[[6~' end-of-buffer-or-history          # page down
-bindkey '^[[H' beginning-of-line                  # home
-bindkey '^[[F' end-of-line                        # end
-bindkey '^[[Z' undo                               # shift + tab undo last action
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+bindkey "^j" backward-word
+bindkey "^k" forward-word
 
 # enable completion features
 autoload -Uz compinit
