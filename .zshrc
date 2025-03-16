@@ -237,6 +237,13 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+# user-defined funcs
+bloodhound-ce() {
+command -v docker-compose > /dev/null || { sudo apt update && sudo apt -y install docker-compose }
+curl -L https://ghst.ly/getbhce | sudo docker-compose -f - up | grep -E --color=always '#.+#|^' & until curl http://127.0.0.1:8080 &> /dev/null; do printf ...; sleep 1; done
+xdg-open http://127.0.0.1:8080
+}
+
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
