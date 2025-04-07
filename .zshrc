@@ -255,4 +255,4 @@ fi
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
-PROMPT="%F(%(#.blue.green)}[%D{%m/%f/%y} %D{%L:%M:%S})"$PROMPT
+PROMPT="%F{%(#.blue.green)}(%D{%m/%f/%y} %D{%L:%M:%S})"$PROMPT
